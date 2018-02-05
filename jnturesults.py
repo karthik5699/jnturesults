@@ -14,9 +14,10 @@ def get_results(url):
 	results_list = []
 
 	for link in results_div:
-		results_list.append(link.get('href'))
+		results_list.append(link)
 
-	print(results_list)
+	for i in range(len(results_list)):
+		print(results_list[i].text)
 
 
 get_results(jntu_url)
