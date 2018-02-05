@@ -1,6 +1,8 @@
 import urllib
 import requests
 import bs4
+import smtplib
+import base64
 
 
 
@@ -17,6 +19,7 @@ def get_results(url):
 	for link in results_div:
 		results_list.append(link)
 
+
 	return results_list
 
 
@@ -30,12 +33,36 @@ def connectToUrl():
 
 
 def print_results(news):
+
 	
 	for i in range(len(news)):
 		print(news[i].text)
+
+		if 'B.Tech II' in news[i].text:
+			wayToMail()
+			break
+
+
+
+
+
+
+def wayToMail():
+	fromaddr = input("Your Email address\t")
+	password = input("Your password\t")
+	toaddr = fromaddr
+	message = "New result added to the results list"
+	server = smtplib.SMTP(host='smtp.gmail.com',port=587)
+	server.starttls()
+	server.login(fromaddr,password)
+	server.sendmail(fromaddr,toaddr,message)
+	server.quit()
+
+
 		
 
 
 connectToUrl()
+
 
 	
