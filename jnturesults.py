@@ -3,6 +3,7 @@ import requests
 import bs4
 import smtplib
 import base64
+import getpass
 
 
 
@@ -65,7 +66,7 @@ def wayToMail():
 		To send a email to the user itself 
 	"""
 	fromaddr = input("Your Email address\t")
-	password = input("Your password\t")
+	password = getpass.getpass('Password:')
 	toaddr = fromaddr
 	message = "New result added to the results list"
 	server = smtplib.SMTP(host='smtp.gmail.com',port=587)
@@ -80,8 +81,6 @@ def wayToMail():
 
 try:	
 	connectToUrl()
-
-
  	
 except IOError:
  	print("No internet access")
