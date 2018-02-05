@@ -3,6 +3,7 @@ import requests
 import bs4
 
 
+
 jntu_url = 'http://jntuhceh.ac.in/'
 
 def get_results(url):
@@ -16,8 +17,25 @@ def get_results(url):
 	for link in results_div:
 		results_list.append(link)
 
-	for i in range(len(results_list)):
-		print(results_list[i].text)
+	return results_list
 
 
-get_results(jntu_url)
+def connectToUrl():
+	response_received_list = get_results(jntu_url)
+	if response_received_list!=None:
+		print_results(response_received_list)
+
+	else:
+		print('Something went wrong')
+
+
+def print_results(news):
+	
+	for i in range(len(news)):
+		print(news[i].text)
+		
+
+
+connectToUrl()
+
+	
