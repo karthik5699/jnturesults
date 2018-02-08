@@ -53,12 +53,16 @@ def print_results(news):
 		print(news[i].text)
 		print('------------------------')
 
-		if 'B.Tech II' in news[i].text:
+
+		if 'B.Tech  II year' in news[i].text:
 			try:
 				wayToMail()
+				print("message sent")
 				break
 			except smtplib.SMTPAuthenticationError:
 				print("Error in authenticating your account. Email or password is incorrect")
+
+		
 
 
 def wayToMail():
